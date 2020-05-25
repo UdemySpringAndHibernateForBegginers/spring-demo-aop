@@ -8,8 +8,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class MyDemoLoggingAspect {
 
-    @Before("execution(public void addAccount())")
+//    @Before("execution(public void addAccount())") //uruchomi się dla metody public void addAccount z dowolnej klasy
+//    @Before("execution(public void com.luv2code.aop.dao.AccountDao.addAccount())") //uruchomi się dla metody public void addAccount ze wskazanej klasy
+//    @Before("execution(public void add*())") //uruchomi się dla wszystkich metod public void rozpoczynających się od "add" z dowolnej klasy
+    @Before("execution(void add*())") //uruchomi się dla metody void rozpoczynającej się od "add" z dowolnej klasy
     public void beforeAddAccountAdvice() {
-        System.out.println("Executing @Before advice on addAccount...");
+        System.out.println("Executing @Before advice on below method...");
     }
 }
