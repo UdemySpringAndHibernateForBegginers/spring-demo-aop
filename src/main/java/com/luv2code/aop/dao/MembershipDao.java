@@ -9,4 +9,8 @@ public class MembershipDao {
         System.out.println(getClass() + ": doing my DB work: adding new membership");
         return true;
     }
+
+    public void goToSleep() {
+        System.out.println(getClass() + ": going to sleep");
+    }
 }
