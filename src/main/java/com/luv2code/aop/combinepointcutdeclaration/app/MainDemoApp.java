@@ -17,6 +17,13 @@ public class MainDemoApp {
         AccountDao accountDao = context.getBean("accountDao", AccountDao.class);
         MembershipDao membershipDao = context.getBean("membershipDao", MembershipDao.class);
 
+        //use getter and setter
+        accountDao.setName("foobar");
+        accountDao.setServiceCode("silver");
+
+        String tmpName = accountDao.getName();
+        String tmpServiceCode = accountDao.getServiceCode();
+
         //call the business method
         accountDao.addAccount(new Account("afwqef", "wqefewf"), true);
         membershipDao.addMembership();

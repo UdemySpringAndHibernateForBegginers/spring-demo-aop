@@ -12,13 +12,23 @@ public class MyDemoLoggingAspect {
     @Pointcut("execution(* com.luv2code.aop.combinepointcutdeclaration.dao.*.*(..))") //uruchomi się dla wszystkich metod z zadanego pakietu, bez względu na nazwę i parametry
     private void forDaoPackage() {}
 
+    @Pointcut("execution(* com.luv2code.aop.combinepointcutdeclaration.dao.*.get*(..))") //uruchomi się dla wszystkich getterów z zadanego pakietu
+    private void forGetters() {}
 
-    @Before("forDaoPackage()") //przykład skorzystania z powyższego pointcut declaration
+    @Pointcut("execution(* com.luv2code.aop.combinepointcutdeclaration.dao.*.set*(..))") //uruchomi się dla wszystkich setterów z zadanego pakietu
+    private void forSetters() {}
+
+    @Pointcut("forDaoPackage() && !(forGetters() || forSetters())") // COMBINE POINTCUT EXPRESSION
+    private void forDaoPackageNoGettersNoSetters() {}               // uruchomi się dla wszystkich metod z zadanego pakietu, bez względu na nazwę i parametry
+                                                                    // ale NIE dla getterów i setterów !!!!
+
+
+    @Before("forDaoPackageNoGettersNoSetters()") //przykład skorzystania z powyższego COMBINE POINTCUT EXPRESSION
     public void beforeAddAccountAdvice() {
         System.out.println("Executing @Before advice on below method...");
     }
 
-    @Before("forDaoPackage()") //przykład skorzystania z powyższego pointcut declaration
+    @Before("forDaoPackageNoGettersNoSetters()") //przykład skorzystania z powyższego COMBINE POINTCUT EXPRESSION
     public void performApiAnalytics() {
         System.out.println("Performing API analytics...");
     }
