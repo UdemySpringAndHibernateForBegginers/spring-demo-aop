@@ -6,11 +6,11 @@ import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
-public class MyDemoLoggingAspect {
+public class MyApiAnalyticsAspect {
 
     @Before("forDaoPackageNoGettersNoSetters()") //przykład skorzystania z powyższego COMBINE POINTCUT EXPRESSION
-    public void beforeAddAccountAdvice() {
-        System.out.println("**** Advice method: Executing @Before advice on below method...");
+    public void performApiAnalytics() {
+        System.out.println("**** Advice method: Performing API analytics...");
     }
 
 }
