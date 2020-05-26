@@ -1,9 +1,9 @@
-package com.luv2code.aop.app;
+package com.luv2code.aop.simpleexample.app;
 
-import com.luv2code.aop.config.DemoConfig;
-import com.luv2code.aop.dao.AccountDao;
-import com.luv2code.aop.dao.MembershipDao;
-import com.luv2code.aop.model.Account;
+import com.luv2code.aop.simpleexample.config.DemoConfig;
+import com.luv2code.aop.simpleexample.dao.AccountDao;
+import com.luv2code.aop.simpleexample.dao.MembershipDao;
+import com.luv2code.aop.simpleexample.model.Account;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class MainDemoApp {

@@ -1,4 +1,4 @@
-package com.luv2code.aop.model;
+package com.luv2code.aop.simpleexample.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

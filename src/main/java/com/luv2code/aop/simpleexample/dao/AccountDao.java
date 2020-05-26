@@ -1,6 +1,6 @@
-package com.luv2code.aop.dao;
+package com.luv2code.aop.simpleexample.dao;
 
-import com.luv2code.aop.model.Account;
+import com.luv2code.aop.simpleexample.model.Account;
 import org.springframework.stereotype.Component;
 
 @Component
