@@ -9,7 +9,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class MyCloudLoggingAspect {
 
-    @Before("forDaoPackageNoGettersNoSetters()") //przykład skorzystania z powyższego COMBINE POINTCUT EXPRESSION
+    //przykład skorzystania z COMBINE POINTCUT EXPRESSION zdefiniowanego w klasie com.luv2code.aop.orderaspects.aspect.AopPointcutExpressionContainer
+    @Before("com.luv2code.aop.orderaspects.aspect.AopPointcutExpressionContainer.forDaoPackageNoGettersNoSetters()")
     public void logToCloudAdvice() {
         System.out.println("**** Advice method: Performing logging to cloud...");
     }

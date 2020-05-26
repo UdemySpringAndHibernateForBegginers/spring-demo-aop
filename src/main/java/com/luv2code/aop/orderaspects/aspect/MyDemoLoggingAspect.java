@@ -8,7 +8,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class MyDemoLoggingAspect {
 
-    @Before("forDaoPackageNoGettersNoSetters()") //przykład skorzystania z powyższego COMBINE POINTCUT EXPRESSION
+    //przykład skorzystania z COMBINE POINTCUT EXPRESSION zdefiniowanego w klasie com.luv2code.aop.orderaspects.aspect.AopPointcutExpressionContainer
+    @Before("com.luv2code.aop.orderaspects.aspect.AopPointcutExpressionContainer.forDaoPackageNoGettersNoSetters()")
     public void beforeAddAccountAdvice() {
         System.out.println("**** Advice method: Executing @Before advice on below method...");
     }
