@@ -1,6 +1,6 @@
 package com.luv2code.aop.pointcutdeclaration.dao;
 
-import com.luv2code.aop.simpleexample.model.Account;
+import com.luv2code.aop.pointcutdeclaration.model.Account;
 import org.springframework.stereotype.Component;
 
 @Component

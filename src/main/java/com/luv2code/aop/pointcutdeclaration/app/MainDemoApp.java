@@ -1,9 +1,9 @@
 package com.luv2code.aop.pointcutdeclaration.app;
 
-import com.luv2code.aop.simpleexample.config.DemoConfig;
-import com.luv2code.aop.simpleexample.dao.AccountDao;
-import com.luv2code.aop.simpleexample.dao.MembershipDao;
-import com.luv2code.aop.simpleexample.model.Account;
+import com.luv2code.aop.pointcutdeclaration.config.DemoConfig;
+import com.luv2code.aop.pointcutdeclaration.dao.AccountDao;
+import com.luv2code.aop.pointcutdeclaration.dao.MembershipDao;
+import com.luv2code.aop.pointcutdeclaration.model.Account;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class MainDemoApp {
