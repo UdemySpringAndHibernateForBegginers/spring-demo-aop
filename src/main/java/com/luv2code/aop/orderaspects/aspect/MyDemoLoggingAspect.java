@@ -25,11 +25,16 @@ public class MyDemoLoggingAspect {
 
     @Before("forDaoPackageNoGettersNoSetters()") //przykład skorzystania z powyższego COMBINE POINTCUT EXPRESSION
     public void beforeAddAccountAdvice() {
-        System.out.println("Executing @Before advice on below method...");
+        System.out.println("**** Advice method: Executing @Before advice on below method...");
     }
 
     @Before("forDaoPackageNoGettersNoSetters()") //przykład skorzystania z powyższego COMBINE POINTCUT EXPRESSION
     public void performApiAnalytics() {
-        System.out.println("Performing API analytics...");
+        System.out.println("**** Advice method: Performing API analytics...");
+    }
+
+    @Before("forDaoPackageNoGettersNoSetters()") //przykład skorzystania z powyższego COMBINE POINTCUT EXPRESSION
+    public void logToCloudAdvice() {
+        System.out.println("**** Advice method: Performing logging to cloud...");
     }
 }
