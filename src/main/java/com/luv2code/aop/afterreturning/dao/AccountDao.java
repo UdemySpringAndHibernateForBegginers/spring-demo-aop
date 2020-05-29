@@ -3,6 +3,9 @@ package com.luv2code.aop.afterreturning.dao;
 import com.luv2code.aop.afterreturning.model.Account;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class AccountDao {
 
@@ -44,5 +47,20 @@ public class AccountDao {
     public boolean doWork() {
         System.out.println(getClass() + ": doing my work");
         return false;
+    }
+
+    public List<Account> findAccounts() {
+
+        List<Account> list = new ArrayList<>();
+
+        Account account = new Account("name_1", "level_1");
+        Account account2 = new Account("name_2", "level_2");
+        Account account3 = new Account("name_3", "level_3");
+
+        list.add(account);
+        list.add(account2);
+        list.add(account3);
+
+        return list;
     }
 }

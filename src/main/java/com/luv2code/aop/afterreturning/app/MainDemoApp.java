@@ -6,6 +6,8 @@ import com.luv2code.aop.afterreturning.dao.MembershipDao;
 import com.luv2code.aop.afterreturning.model.Account;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import java.util.List;
+
 public class MainDemoApp {
 
     public static void main(String[] args) {
@@ -15,20 +17,12 @@ public class MainDemoApp {
 
         //get the bean from spring container
         AccountDao accountDao = context.getBean("accountDao", AccountDao.class);
-        MembershipDao membershipDao = context.getBean("membershipDao", MembershipDao.class);
 
-        //use getter and setter
-        accountDao.setName("foobar");
-        accountDao.setServiceCode("silver");
+        // call the new method for finding account
+        List<Account> accounts = accountDao.findAccounts();
 
-        String tmpName = accountDao.getName();
-        String tmpServiceCode = accountDao.getServiceCode();
-
-        //call the business method
-        accountDao.addAccount(new Account("afwqef", "wqefewf"), true);
-        membershipDao.addMembership();
-        accountDao.doWork();
-        membershipDao.goToSleep();
+        System.out.println("Oto wynik metody findAccounts:");
+        accounts.forEach(System.out::println);
 
         //close the context
         context.close();
