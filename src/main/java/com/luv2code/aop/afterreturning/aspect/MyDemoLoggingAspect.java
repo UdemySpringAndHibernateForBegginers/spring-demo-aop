@@ -51,7 +51,15 @@ public class MyDemoLoggingAspect {
         //wypisanie wyniku przechwyconej metody:
         System.out.println("**** Advice method: Executing @AfterReturning advice; method result: " + result);
 
+        //modyfikacja tego co zwróciła metoda!!!!!!
+        //zmiana pola name na uppercase
+        result.forEach(x -> {
+            String upperCase = x.getName().toUpperCase();
+            x.setName(upperCase);
+        });
 
+        //wypisanie modyfikowanego wyniku
+        System.out.println("**** Advice method: Executing @AfterReturning advice; method MODIFIED result: " + result);
     }
 
 }
