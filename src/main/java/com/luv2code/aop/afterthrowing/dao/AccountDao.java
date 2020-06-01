@@ -49,7 +49,11 @@ public class AccountDao {
         return false;
     }
 
-    public List<Account> findAccounts() {
+    public List<Account> findAccounts(boolean rzucWyjatek) {
+
+        if (rzucWyjatek) {
+            throw new RuntimeException("Oto umyślny wyjątek!");
+        }
 
         List<Account> list = new ArrayList<>();
 

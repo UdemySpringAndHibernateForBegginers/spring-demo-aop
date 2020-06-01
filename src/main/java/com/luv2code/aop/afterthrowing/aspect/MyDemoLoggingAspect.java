@@ -4,6 +4,7 @@ import com.luv2code.aop.afterthrowing.model.Account;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.reflect.MethodSignature;
@@ -60,6 +61,21 @@ public class MyDemoLoggingAspect {
 
         //wypisanie modyfikowanego wyniku
         System.out.println("**** Advice method: Executing @AfterReturning advice; method MODIFIED result: " + result);
+    }
+
+    @AfterThrowing(
+            pointcut = "execution(* com.luv2code.aop.afterthrowing.dao.AccountDao.findAccounts(..))",
+            throwing = "theException"
+    )
+    public void afterThrowingFindAccountsAdvice(JoinPoint joinPoint, Throwable theException) {
+
+        //wypisanie metody, którą właśnie przechwyciliśmy
+        Signature signature = joinPoint.getSignature();
+        System.out.println("**** Advice method: Executing @AfterThrowing advice on method: " + signature);
+
+        //zalogowanie wyjatku
+        System.out.println("**** Advice method: the exception is: " + theException);
+
     }
 
 }

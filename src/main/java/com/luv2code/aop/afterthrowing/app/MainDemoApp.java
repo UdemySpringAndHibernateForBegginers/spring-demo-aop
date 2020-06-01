@@ -18,7 +18,13 @@ public class MainDemoApp {
         AccountDao accountDao = context.getBean("accountDao", AccountDao.class);
 
         // call the new method for finding account
-        List<Account> accounts = accountDao.findAccounts();
+        List<Account> accounts = null;
+        boolean rzucWyjatek = true;
+        try {
+            accounts = accountDao.findAccounts(rzucWyjatek);
+        } catch (Exception e) {
+            System.out.println("Main program caught exception: " + e);
+        }
 
         System.out.println("Oto wynik metody findAccounts:");
         accounts.forEach(System.out::println);
