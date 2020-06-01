@@ -3,10 +3,7 @@ package com.luv2code.aop.afterfinally.aspect;
 import com.luv2code.aop.afterfinally.model.Account;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.AfterThrowing;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -40,7 +37,7 @@ public class MyDemoLoggingAspect {
     }
 
     @AfterReturning(
-            pointcut = "execution(* com.luv2code.aop.afterreturning.dao.AccountDao.findAccounts(..))",
+            pointcut = "execution(* com.luv2code.aop.afterfinally.dao.AccountDao.findAccounts(..))",
             returning = "result"
     )
     public void afterReturningFindAccountsAdvice(JoinPoint joinPoint, List<Account> result) {
@@ -75,6 +72,15 @@ public class MyDemoLoggingAspect {
 
         //zalogowanie wyjatku
         System.out.println("**** Advice method: the exception is: " + theException);
+
+    }
+
+    @After("execution(* com.luv2code.aop.afterfinally.dao.AccountDao.findAccounts(..))")
+    public void afterFinallyFindAccountsAdvice(JoinPoint joinPoint) {
+
+        //wypisanie metody, którą właśnie przechwyciliśmy
+        Signature signature = joinPoint.getSignature();
+        System.out.println("**** Advice method: Executing @After (finally) advice on method: " + signature);
 
     }
 

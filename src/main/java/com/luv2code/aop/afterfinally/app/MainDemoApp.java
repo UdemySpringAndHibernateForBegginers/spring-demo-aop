@@ -19,7 +19,7 @@ public class MainDemoApp {
 
         // call the new method for finding account
         List<Account> accounts = null;
-        boolean rzucWyjatek = true;
+        boolean rzucWyjatek = false;
         try {
             accounts = accountDao.findAccounts(rzucWyjatek);
         } catch (Exception e) {
