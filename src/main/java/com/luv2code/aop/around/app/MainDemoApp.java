@@ -3,6 +3,7 @@ package com.luv2code.aop.around.app;
 import com.luv2code.aop.around.config.DemoConfig;
 import com.luv2code.aop.around.dao.AccountDao;
 import com.luv2code.aop.around.model.Account;
+import com.luv2code.aop.around.service.TrafficFortuneService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.List;
@@ -15,19 +16,13 @@ public class MainDemoApp {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(DemoConfig.class);
 
         //get the bean from spring container
-        AccountDao accountDao = context.getBean("accountDao", AccountDao.class);
+        TrafficFortuneService trafficFortuneService = context.getBean("trafficFortuneService", TrafficFortuneService.class);
 
-        // call the new method for finding account
-        List<Account> accounts = null;
-        boolean rzucWyjatek = true;
-        try {
-            accounts = accountDao.findAccounts(rzucWyjatek);
-        } catch (Exception e) {
-            System.out.println("Main program caught exception: " + e);
-        }
-
-        System.out.println("Oto wynik metody findAccounts:");
-        accounts.forEach(System.out::println);
+        //uruchomienie metody
+        System.out.println("Uruchamiam getFortune!");
+        String data = trafficFortuneService.getFortune();
+        System.out.println("My fortune is: " + data);
+        System.out.println("Finished.");
 
         //close the context
         context.close();

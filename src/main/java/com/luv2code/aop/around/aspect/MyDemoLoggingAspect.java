@@ -2,6 +2,7 @@ package com.luv2code.aop.around.aspect;
 
 import com.luv2code.aop.around.model.Account;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
@@ -82,6 +83,29 @@ public class MyDemoLoggingAspect {
         Signature signature = joinPoint.getSignature();
         System.out.println("**** Advice method: Executing @After (finally) advice on method: " + signature);
 
+    }
+
+    @Around("execution(* com.luv2code.aop.around.service.*.getFortune(..))")
+    public Object aroungGetFortuneAdvice(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+
+        //wypisanie metody, którą właśnie przechwyciliśmy
+        Signature signature = proceedingJoinPoint.getSignature();
+        System.out.println("**** Around advice: Executing @Around advice on method: " + signature);
+
+        //get the begin timestamp
+        long begin = System.currentTimeMillis();
+
+        //uruchomienie metody docelowej / przechwytywanej!!!!
+        Object result = proceedingJoinPoint.proceed();
+
+        //get the begin timestamp
+        long end = System.currentTimeMillis();
+
+        //wyznaczenie duration
+        long duration = end - begin;
+        System.out.println("**** Around advice: duration: " + duration);
+
+        return result;
     }
 
 }
