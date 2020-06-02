@@ -107,9 +107,12 @@ public class MyDemoLoggingAspect {
             //logujemy wyjątek
             log.warn("Uwaga, nastąpił wyjątek: " + e.getMessage());
 
-            //podstawiamy jakąś inną wartość pod to co zwróciłąby metoda docelowa / przechwycona!!!!!!!
-            //dzięki temu główny program nawet się nie dowie, że metoda docelowa rzuciłą wyjątekiem
-            result = "oto jakiś domyślny wynik metody getFortune()!!!";
+            // podstawiamy jakąś inną wartość pod to co zwróciłąby metoda docelowa / przechwycona!!!!!!!
+            // dzięki temu główny program nawet się nie dowie, że metoda docelowa rzuciłą wyjątekiem
+            //result = "oto jakiś domyślny wynik metody getFortune()!!!";
+
+            //opcja 2: pozwalamy na rzucenie wyjątku do głównego proramu
+            throw e;
         }
 
         //get the begin timestamp
