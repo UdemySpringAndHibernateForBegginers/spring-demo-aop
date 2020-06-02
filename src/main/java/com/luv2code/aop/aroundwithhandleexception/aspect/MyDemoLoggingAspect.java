@@ -1,6 +1,7 @@
 package com.luv2code.aop.aroundwithhandleexception.aspect;
 
 import com.luv2code.aop.aroundwithhandleexception.model.Account;
+import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Component;
 import java.util.Arrays;
 import java.util.List;
 
+@Slf4j
 @Aspect
 @Order(2)
 @Component
@@ -96,7 +98,19 @@ public class MyDemoLoggingAspect {
         long begin = System.currentTimeMillis();
 
         //uruchomienie metody docelowej / przechwytywanej!!!!
-        Object result = proceedingJoinPoint.proceed();
+        Object result = null;
+
+        try {
+            result = proceedingJoinPoint.proceed();
+        } catch (Exception e) {
+
+            //logujemy wyjątek
+            log.warn("Uwaga, nastąpił wyjątek: " + e.getMessage());
+
+            //podstawiamy jakąś inną wartość pod to co zwróciłąby metoda docelowa / przechwycona!!!!!!!
+            //dzięki temu główny program nawet się nie dowie, że metoda docelowa rzuciłą wyjątekiem
+            result = "oto jakiś domyślny wynik metody getFortune()!!!";
+        }
 
         //get the begin timestamp
         long end = System.currentTimeMillis();

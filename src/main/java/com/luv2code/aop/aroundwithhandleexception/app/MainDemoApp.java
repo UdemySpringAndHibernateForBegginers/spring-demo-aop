@@ -18,7 +18,8 @@ public class MainDemoApp {
 
         //uruchomienie metody
         log.info("Uruchamiam getFortune!");
-        String data = trafficFortuneService.getFortune();
+        boolean rzucWyjatek = true;
+        String data = trafficFortuneService.getFortune(rzucWyjatek);
         log.info("My fortune is: " + data);
         log.info("Finished.");
 
